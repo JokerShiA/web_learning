@@ -1,0 +1,12 @@
+span{
+   color:red;
+    font-size:20px;
+}
+
+#id {
+    color: green;
+}
+
+p .class {
+    color: yellow;
+}
