@@ -1,17 +1,32 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HelloWorld msg="Welcome to Your Vue.js App1"/>
+    <test msg="123456789"/>
+    <div v-if="Math.random() > 0.5">
+      Now you see me
+    </div>
+    <div v-else>
+      Now you don't
+    </div>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import test from './components/test.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    HelloWorld,
+    test
+  },
+  created(){
+    console.log(this)
+  },
+  mounted() {
+    console.log()
   }
 }
 </script>
