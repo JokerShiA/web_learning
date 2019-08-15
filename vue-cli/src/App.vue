@@ -1,14 +1,8 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App1"/>
+    <img alt="Vue logo" src="./assets/logo.png" v-if="false">
+    <HelloWorld msg="Welcome to Your Vue.js App1" v-if="false"></HelloWorld>
     <test msg="123456789"/>
-    <div v-if="Math.random() > 0.5">
-      Now you see me
-    </div>
-    <div v-else>
-      Now you don't
-    </div>
   </div>
 </template>
 

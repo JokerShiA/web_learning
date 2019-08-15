@@ -1,14 +1,12 @@
 <template>
   <div class="test">
-    <h1>{{ msg }}</h1>
-    <button v-on:click="reverseMessage">反转消息</button>
     <ul>
       <li v-for="n in evenNumbers" :key="n">{{ n }}</li>
     </ul>
     <input v-on:keyup.enter="onEnterUp" v-on:keydown.enter="onEnterDown" />
     <br />
-
-    <div id="blog-posts-events-demo">
+    <!--  -->
+    <div id="blog-posts-events-demo" v-if="false">
       <div :style="{ fontSize: postFontSize + 'em' }">
         <sub-post
           v-for="post in posts"
@@ -20,16 +18,30 @@
       </div>
     </div>
 
+    <!--  -->
+    <test-slot>
+      <template v-slot:default="slotProps">{{ slotProps.user.firstName }}</template>
+      <template #other="otherSlotProps">{{ otherSlotProps.user.lastName }}</template>
+      <template #jiexi="{user}">{{user.firstName + user.lastName }}</template>
+      <template v-slot:todo="{ todo }">
+        <span v-if="todo.isComplete">✓</span>
+        {{ todo.text }}
+      </template>
+    </test-slot>
   </div>
 </template>
 
 <script>
-import subPost from "./sub.vue";
+import subPost from "./emit.vue";
+import testEvent from "./testEvent.vue";
+import testSlot from "./testSlot.vue";
 
 export default {
   name: "test",
   components: {
-    subPost
+    subPost,
+    testEvent,
+    testSlot
   },
   props: {
     msg: String
@@ -38,17 +50,15 @@ export default {
     return {
       numbers: [1, 2, 3, 4, 5],
       counter: 0,
-      posts:[{title: 'aa', id:1},{title: 'bb', id:2},{title: 'cc',id:3}],
+      posts: [
+        { title: "aa", id: 1 },
+        { title: "bb", id: 2 },
+        { title: "cc", id: 3 }
+      ],
       postFontSize: 1
     };
   },
   methods: {
-    reverseMessage: function() {
-      this.msg = this.msg
-        .split("")
-        .reverse()
-        .join("");
-    },
     onEnterUp: function() {
       console.log("enter up");
     },
