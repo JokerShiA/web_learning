@@ -28,6 +28,9 @@
         {{ todo.text }}
       </template>
     </test-slot>
+    <!--  -->
+    <components-edge></components-edge>
+    <!--  -->
   </div>
 </template>
 
@@ -35,13 +38,15 @@
 import subPost from "./emit.vue";
 import testEvent from "./testEvent.vue";
 import testSlot from "./testSlot.vue";
+import componentsEdge from "./componentsEdge.vue"
 
 export default {
   name: "test",
   components: {
     subPost,
     testEvent,
-    testSlot
+    testSlot,
+    componentsEdge
   },
   props: {
     msg: String
