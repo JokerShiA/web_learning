@@ -1,9 +1,11 @@
 <template>
   <div class="test">
+    <h1>{{ msg }}</h1>
+    <!--  -->
     <ul>
       <li v-for="n in evenNumbers" :key="n">{{ n }}</li>
     </ul>
-    <input v-on:keyup.enter="onEnterUp" v-on:keydown.enter="onEnterDown" />
+    <input :value="value" v-on:keyup.enter="onEnterUp" v-on:keydown.enter="onEnterDown" />
     <br />
     <!--  -->
     <div id="blog-posts-events-demo" v-if="false">
@@ -18,7 +20,7 @@
       </div>
     </div>
 
-    <!--  -->
+    <!-- v-slot: 缩写# -->
     <test-slot>
       <template v-slot:default="slotProps">{{ slotProps.user.firstName }}</template>
       <template #other="otherSlotProps">{{ otherSlotProps.user.lastName }}</template>
@@ -29,7 +31,7 @@
       </template>
     </test-slot>
     <!--  -->
-    <components-edge></components-edge>
+    <components-edge v-if="true"></components-edge>
     <!--  -->
   </div>
 </template>
@@ -60,7 +62,8 @@ export default {
         { title: "bb", id: 2 },
         { title: "cc", id: 3 }
       ],
-      postFontSize: 1
+      postFontSize: 1,
+      value: 'xxxxxx'
     };
   },
   methods: {
